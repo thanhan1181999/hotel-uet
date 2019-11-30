@@ -1,5 +1,6 @@
 <?php
 //public route
+Route::get('/','publicPage@index');
 Route::get('index','publicPage@index');
 Route::get('/about','publicPage@about');
 Route::get('/login','publicPage@login')->name('login');

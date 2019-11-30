@@ -33,7 +33,7 @@
                     @if (sizeof($blog) > 1)
                         @foreach ($blog as $value)   
                                 <div class="col-md-6">
-                                    <a href="http://localhost:8000/blog?id={{$value->id}}">
+                                    <a href="/blog?id={{$value->id}}">
                                         <div class="blog-background" style="
                                         background-image: url({{$value->image}});
                                         height: 275px; 
@@ -46,7 +46,7 @@
                                             </div>  
                                         </div>
                                     </a>
-                                    <a href="http://localhost:8000/blog?id={{$value->id}}">
+                                    <a href="/blog?id={{$value->id}}">
                                     <div>
                                         <h3 class="heading">{{$value->title}}</h3>
                                     </div>   
@@ -80,12 +80,12 @@
                     @foreach ($blogRandom as $value)   
                         <div class="popular-blog">
                             <div>
-                                <a href="http://localhost:8000/blog?id={{$value->id}}">
+                                <a href="/blog?id={{$value->id}}">
                                     <img class="img-title" src="{{$value->image}}"/>
                                 </a>
                             </div>
                             <div>
-                                <a href="http://localhost:8000/blog?id={{$value->id}}">
+                                <a href="/blog?id={{$value->id}}">
                                     <span>{{$value->title}}<br/></span>
                                 </a>                                
                                 <div class="infor-blog">
