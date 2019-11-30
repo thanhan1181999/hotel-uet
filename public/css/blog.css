@@ -1,0 +1,139 @@
+body {
+    margin: 0px;
+}
+
+.blog-background {
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
+
+.blog {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.blog h1 {
+    font-size: 50px;
+    line-height: 0.8;
+    margin: 30px;
+}
+
+.blog a {
+    text-decoration: none;
+    color: white;
+    margin: auto 10px;
+}
+
+.heading {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.meta-chart {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 111px;
+    height: 90px;
+    background-color: #fb929e;
+}
+
+.meta-chart div {
+    transform: translate(10px, 15px);
+    line-height: 1.7;
+}
+
+.meta-chart div a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* .pagination {
+    display: block;
+    text-align: center;
+}
+
+.pagination li {
+    display: inline-block;
+    border: 3px solid green;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding-top: 7px;
+} */
+
+.img-title {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-right: 20px;
+}
+
+.popular-blog {
+    margin-bottom: 60px;
+}
+
+.popular-blog div {
+    display: inline;
+}
+
+.popular-blog div span {
+    margin-bottom: 30px;
+    font-size: 17px;
+    font-weight: 500;
+    height: auto;
+    float: left;
+    width: calc(100% - 100px);
+}
+
+.infor-blog {
+    font-size: 12px;
+}
+
+.infor-blog a {
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 12px;
+}
+
+form .form-blog {
+    margin: 20px 5% 50px 5%;
+    border: 7px groove lightgrey;
+    text-align: center;
+}
+
+form .form-blog input {
+    border-style: none;
+    width: 90%;
+    height: 30px;
+}
+
+.categories {
+    margin-bottom: 50px;
+    padding: 0px;
+}
+
+.categories li {
+    list-style-type: none;
+    color: red;
+    font-weight: 500;
+}
+
+.categories hr {
+    height: 1px;
+    background: black;
+}
+
+.categories span {
+    float: right;
+}

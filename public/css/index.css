@@ -1,0 +1,117 @@
+* {
+    font-family: Arial sans-serif;
+}
+
+p {
+    font-size: 14px;
+}
+
+.component-1 {
+    background-color: #fb929e;
+}
+
+.sub-1 {
+    padding-top: 50px;
+    background-color: #fb929e;
+    ;
+}
+
+.row-sm-6 input,
+select {
+    height: 60px;
+    width: 125px;
+}
+
+label {
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+.custom {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 75px;
+    background-color: rgb(180, 66, 66);
+}
+
+.custom:hover {
+    background-color: lightgreen;
+}
+
+.sub-2 {
+    height: 1000px;
+    background-color: #fafafa;
+}
+
+.component-2 {
+    height: 1100px;
+    background-color: #fafafa;
+    padding-top: 50px;
+}
+
+.custom-text {
+    font-size: 20px;
+    color: rgb(236, 69, 97);
+    text-align: center;
+}
+
+.text-content {
+    margin-top: 20px;
+}
+
+.sub-2-2 {
+    margin-top: 30px;
+    background-color: rgb(100, 99, 99);
+}
+
+.book-review {
+    margin-top: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.item {
+    height: 600px;
+}
+
+.custom-row {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.set-size {
+    height: 50px;
+    width: 150px;
+}
+
+.component-3 {
+    background-image: url('../source/image/img-home-background.jpg');
+    height: 300px;
+    color: white;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.info-customer {
+    height: 300px;
+    padding-top: 100px;
+    padding-left: 200px;
+    font-size: 20px;
+}
+
+p .info-customer {
+    font-size: 22px;
+}
+
+.component-4 {
+    background-color: #f5e9e9;
+}
+
+.content-about {
+    padding-top: 100px;
+}
+
+.set-color {
+    color: #fafafa;
+}

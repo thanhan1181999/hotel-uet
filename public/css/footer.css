@@ -1,0 +1,59 @@
+.footer{
+	background-color: #fa6b7b;
+}
+.introduce,.company,.question,.feedback{
+	padding-top:20px;
+}
+.feedback{
+	background-color: azure;
+    border-radius: 3px;
+    margin: 24px 0px;
+    position: relative;
+    height: 410px;
+    padding: 15px;
+    box-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.company{
+	padding-left: 37px;
+}
+.footer ul{
+	list-style-type: none;
+	padding-left: 7px;
+}
+.footer ul li{
+	margin-bottom: 15px;
+	display: flex;
+}
+.footer .icons{
+	display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 27px;
+}
+.footer a{
+	text-decoration: none;
+}
+.footer .icons i{
+	color:white;
+	border: 1px solid white;
+	border-radius:50%; 
+	width: 47px;
+    height: 47px;
+   	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .icons i:hover{
+	background-color: deeppink;
+}
+.footer .question i{
+	width: 51px;
+    text-align: center;
+}
+.footer button {
+	right: 15px;
+    bottom: 52px;
+}
+.footer input:focus,.footer textarea:focus{
+	box-shadow: none!important;
+}
