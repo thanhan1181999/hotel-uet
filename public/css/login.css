@@ -21,7 +21,7 @@
 	box-shadow: .2px 5px 12px rgba(0,0,0,0.2);
 	border-radius: 20px;
 	width: 90%;
-	height: 405px;
+/*	height: 405px;*/
 }
 .inputBox{
 	position: relative;
@@ -64,7 +64,7 @@
 .box-in-box form input:focus + label,.box-in-box form input:valid + label{
 	bottom: 35px;
     left: 43px;
-	color: dodgerblue; 
+	color: dodgerblue;
 }
 .box-in-box form button{
 	width: 80%;

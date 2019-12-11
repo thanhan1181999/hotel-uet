@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ $path }}library/boostrap/bootstrap.min.css">
     <link rel="stylesheet" href="{{ $path }}library/boostrap/bootstrap.css">
     <link rel="stylesheet" href="{{ $path }}library/boostrap/font-awesome.css">
+    <link rel="stylesheet" href="{{ $path }}library/boostrap/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ $path }}css/footer.css">
     <link rel="stylesheet" href="{{ $path }}css/login.css">
@@ -71,7 +72,7 @@
     <script src="{{ $path }}js/login.js"></script>
     <script src="{{ $path }}library/boostrap/jquery-3.3.1.slim.min.js"></script>
     <script src="{{ $path }}library/boostrap/popper.min.js"></script>
-    {{-- <script src="library/boostrap/bootstrap.min.js"></script> --}}
+    {{-- <script src="{{ $path }}library/boostrap/bootstrap.min.js"></script> --}}
     <script src="{{ $path }}library/boostrap/bootstrap.js"></script>
 </body>
 </html>

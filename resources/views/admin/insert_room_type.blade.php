@@ -18,6 +18,14 @@
             <label for="formGroupExampleInput2">Trích dẫn</label>
             <input type="text" class="form-control" name="trich_dan" id="trich_dan" placeholder="Example input">
         </fieldset>
+        <fieldset class="form-group">
+            <label for="formGroupExampleInput2">Diện tích</label>
+            <input type="text" class="form-control" name="dien_tich" id="dien_tich" placeholder="Example input">
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="formGroupExampleInput2">Quyền lợi</label>
+            <textarea class="form-control" name="quyen_loi" cols="50" rows="8" placeholder="ql1;ql2;ql3;..."></textarea>
+        </fieldset>
         <button type="confirm" class="btn btn-success">Thêm mới</button>
     </form>
 @endsection

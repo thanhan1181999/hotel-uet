@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
+use URL;
 class adminLogin
 {
     /**
@@ -16,7 +17,7 @@ class adminLogin
     public function handle($request, Closure $next)
     {
         if(Session::has('login'))
-            if( Session('login')=='admin' ) 
+            if( Session('login')=='admin' )
                 return $next($request);
         return redirect()->route('login');
     }

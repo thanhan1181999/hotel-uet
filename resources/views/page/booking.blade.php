@@ -1,6 +1,16 @@
 @extends('master')
 @section('content')
 
+@php
+        $path = url('').'/';
+    @endphp
+<div class="blog-background" style="background-image: url('{{ $path }}/source/image/bg_3.jpg');">
+        <div class="blog">
+            <h1>Booking</h1>
+            <a href="">HOME</a>
+            <a href="">BLOG</a>
+        </div>
+    </div>
 <div class="container">
         <div class="row" >
             <div class="booking-form col-sm-8 push-sm-4">

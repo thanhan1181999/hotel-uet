@@ -2,6 +2,10 @@
 @section('content')
 <div class="box">
         <div class="box-in-box">
+                @if(isset($alert))
+                    <h3 style="position:absolute; top:70px;">{{$alert}}</h3>
+                @endif
+            <!-- đăng nhập -->
             <form action="{{route('dangnhap')}}" id="formlogin" method="post">
                 {{csrf_field()}}
                 <h2>Login</h2>
@@ -29,12 +33,29 @@
                     <span>Don't have account? </span>
                     <a href="register">Sign Up</a>
                 </div>
+                <div>
+                    <a href="{{URL::to('auth/google')}}">
+                        <i class="fa fa-google"></i>
+                        Đăng nhập bằng Google
+                    </a>
+                </div>
             </form>
-            <form action="" id="formforgetpass" hidden="">
+
+            <!-- quên mật khẩu -->
+            <form action="{{route('setpassword')}}" id="formforgetpass" hidden="" method="post">
+                {{csrf_field()}}
                 <h2>Forget Password</h2>
                 <div class="inputBox">
                     <input type="email" name="email" required>
                     <label for="">Email</label>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="name" required>
+                    <label for="">Name</label>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="phone" required>
+                    <label for="">Phone</label>
                 </div>
                 <button type="submit">Get Password</button>
             </form>

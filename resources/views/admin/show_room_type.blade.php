@@ -10,7 +10,8 @@
         <th>Hình ảnh</th>
         <th>Giá</th>
         <th>Trích dẫn</th>
-        <th>Chi tiết</th>
+        <th>Diện tích</th>
+        <th>Quyền lợi</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +23,8 @@
         <td>{{$value['image_room']}}</td>
         <td>{{$value['price']}}</td>
         <td>{{$value['trich_dan']}}</td>
-        <td>{{$value['chi_tiet']}}</td>
+        <td>{{$value['dien_tich']}}</td>
+        <td>{{$value['quyen_loi']}}</td>
         {{-- gui len de xac nhan da chap nhan feedback --}}
         <td>
           <a href="edit_room_type/{{$value['id_room_type']}}"><i class="fa fa-pencil"></i></a>

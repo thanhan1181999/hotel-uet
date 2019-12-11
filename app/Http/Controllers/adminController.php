@@ -117,6 +117,8 @@ class adminController extends Controller
         $room_type->image_room = $path;
         $room_type->price = $request->input('price');
         $room_type->trich_dan = $request->input('trich_dan');
+        $room_type->dien_tich = $request->input('dien_tich');
+        $room_type->quyen_loi = $request->input('quyen_loi');
         $room_type->save();
         return redirect()->back();
     }
@@ -127,12 +129,13 @@ class adminController extends Controller
             $file = $request->image_room; // lấy các giá trị của file về
             $path = $this->uploadFile($file);
         }
-
         $room_type = RoomType::find($request->input('id_room_type'));
         $room_type->room_type = $request->input('room_type');
         $room_type->image_room = $path;
         $room_type->price = $request->input('price');
         $room_type->trich_dan = $request->input('trich_dan');
+        $room_type->dien_tich = $request->input('dien_tich');
+        $room_type->quyen_loi = $request->input('quyen_loi');
         $room_type->save();
         return redirect('admin/quanly/room_type');
     }

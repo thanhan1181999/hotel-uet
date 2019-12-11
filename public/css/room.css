@@ -26,3 +26,27 @@
     font-size: 30px;
     font-variant: small-caps;
 }
+.content-room, .room-other   {
+    font-family: Monospace;
+    font-size: 18px;
+}
+.room-other {
+    font-size: 14px;
+}
+.single-room .title-room {
+    margin-bottom: 30px;
+    font-weight: 550;
+    font-size: 3.5em;
+}
+.service-room {
+    margin-top: 50px;
+    margin: 0px auto;
+}
+.service-room .service-room-single {
+    margin: 20px auto;
+    text-align: center;
+}
+.service-room .service-room-single .name-service {
+    font-family: Monospace;
+    font-size: 18px;
+}

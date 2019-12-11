@@ -10,54 +10,26 @@
     </div>
 <div class="container" style="margin-top: 50px;">
             <div class="row">
-                <div class="col-md-6" style="margin-bottom: 50px;">
-                    <div class="blog-background" style="background-image: url('source/image/room/room-1.jpg'); height: 380px;"></div>
-                    <div class="title">
-                        <h2>SUITE ROOM</h2>
-                        <p>Hệ thống phòng Deluxe được thiết kế nội thất gam màu sang trọng và sở hữu tầm nhìn bao quát ra thành phố sôi động.</p>
-                        <a href="#">Xem thêm &rarr;</a>
+                 @foreach ( $room_type as $element)
+                    <div class="col-md-6" style="margin-bottom: 50px;">
+                        <div class="blog-background" style="background-image: url('{{$element['image_room']}}'); height: 380px;"></div>
+                        <div class="title">
+                            <h2>{{$element['room_type']}}</h2>
+                            <p>{{$element['trich_dan']}}</p>
+                            <a href="single_room/{{$element['id_room_type']}}">Xem thêm &rarr;</a>
+                        </div>
+                        <div class="price">
+                            <p>Giá từ</p><span>${{$element['price']}}/đêm</span>
+                           <a href="booking_form" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
+                        </div>
                     </div>
-                    <div class="price">
-                        <p>Giá từ</p><span>$ 84.50</span>
-                       <a href="booking_form" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
-                    </div>
+                 @endforeach
+            </div>
+            <div class="row" style="height: 77px;text-align: center;">
+                <div class="col-md-6 push-md-3">
+                     {!!$room_type->links()!!}
                 </div>
-                <div class="col-md-6" style="margin-bottom: 50px;">
-                    <div class="blog-background" style="background-image: url('source/image/room/room-2.jpg'); height: 380px;"></div>
-                    <div class="title">
-                        <h2>SUITE ROOM</h2>
-                        <p>Hệ thống phòng Deluxe được thiết kế nội thất gam màu sang trọng và sở hữu tầm nhìn bao quát ra thành phố sôi động.</p>
-                        <a href="#">Xem thêm &rarr;</a>
-                    </div>
-                    <div class="price">
-                        <p>Giá từ</p><span>$ 84.50</span>
-                       <a href="booking_form" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-6" style="margin-bottom: 50px;">
-                    <div class="blog-background" style="background-image: url('source/image/room/room-3.jpg'); height: 380px;"></div>
-                    <div class="title">
-                        <h2>SUITE ROOM</h2>
-                        <p>Hệ thống phòng Deluxe được thiết kế nội thất gam màu sang trọng và sở hữu tầm nhìn bao quát ra thành phố sôi động.</p>
-                        <a href="#">Xem thêm &rarr;</a>
-                    </div>
-                    <div class="price">
-                        <p>Giá từ</p><span>$ 84.50</span>
-                       <a href="booking_form" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-6" style="margin-bottom: 50px;">
-                    <div class="blog-background" style="background-image: url('source/image/room/room-4.jpg'); height: 380px;"></div>
-                    <div class="title">
-                        <h2>SUITE ROOM</h2>
-                        <p>Hệ thống phòng Deluxe được thiết kế nội thất gam màu sang trọng và sở hữu tầm nhìn bao quát ra thành phố sôi động.</p>
-                        <a href="#">Xem thêm &rarr;</a>
-                    </div>
-                    <div class="price">
-                        <p>Giá từ</p><span>$ 84.50</span>
-                       <a href="booking_form" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
-                    </div>
-                </div>
+
             </div>
         </div>
 @endsection

@@ -19,48 +19,48 @@
                     @endif
                     <!-- khi có 1 bài viết -->
                     @if (sizeof($blog) == 1 && !isset($search))
-                        @foreach ($blog as $value)  
+                        @foreach ($blog as $value)
                                 <div class="col-md-12">
                                     <h2>{{$value->title}}</h2>
-                                    <b>{{$value->date}}</b>                                    
+                                    <b>{{$value->date}}</b>
                                     <p>{{$value->text1}}</p>
                                     <img src="{{$value->image}}" alt="image" style="width: 100%;">
                                     <p>{{$value->text2}}</p>
-                                    <b>{{$value->author}}</b>                           
-                                </div>   
-                        @endforeach      
+                                    <b>{{$value->author}}</b>
+                                </div>
+                        @endforeach
                     @endif
                     @if (sizeof($blog) > 1)
-                        @foreach ($blog as $value)   
+                        @foreach ($blog as $value)
                                 <div class="col-md-6">
-                                    <a href="/blog?id={{$value->id}}">
+                                    <a href="blog?id={{$value->id}}">
                                         <div class="blog-background" style="
                                         background-image: url({{$value->image}});
-                                        height: 275px; 
+                                        height: 275px;
                                         background-size: cover;
                                         background-position: center;
                                         position:relative;">
                                             <div class="meta-chart">
                                                 <div>{{$value->date}}</div>
                                                 <div>{{$value->author}}</div>
-                                            </div>  
+                                            </div>
                                         </div>
                                     </a>
-                                    <a href="/blog?id={{$value->id}}">
+                                    <a href="blog?id={{$value->id}}">
                                     <div>
                                         <h3 class="heading">{{$value->title}}</h3>
-                                    </div>   
-                                    </a>                                                            
-                                </div>      
-                        @endforeach        
-                    @endif               
+                                    </div>
+                                    </a>
+                                </div>
+                        @endforeach
+                    @endif
                     </div>
 
                     <!-- phân trang -->
                     <div style="height: 77px;text-align: center;">
                         {!!$blog->links()!!}
                     </div>
-                </div>  
+                </div>
             </div>
 
             <!-- cột phải -->
@@ -77,25 +77,25 @@
 
                     <!-- random article -->
                     <h3 style="margin-bottom: 40px;">Random artiles</h3>
-                    @foreach ($blogRandom as $value)   
+                    @foreach ($blogRandom as $value)
                         <div class="popular-blog">
                             <div>
-                                <a href="/blog?id={{$value->id}}">
+                                <a href="blog?id={{$value->id}}">
                                     <img class="img-title" src="{{$value->image}}"/>
                                 </a>
                             </div>
                             <div>
-                                <a href="/blog?id={{$value->id}}">
+                                <a href="blog?id={{$value->id}}">
                                     <span>{{$value->title}}<br/></span>
-                                </a>                                
+                                </a>
                                 <div class="infor-blog">
                                     <img src="source/image/icons/calendar.svg" />{{$value->date}}
                                     <img src="source/image/icons/user.svg" />{{$value->author}}
                                 </div>
                             </div>
-                        </div>          
-                    @endforeach        
-              
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>

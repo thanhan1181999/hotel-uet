@@ -10,6 +10,7 @@ use App\Room;
 use App\RoomType;
 use Session;
 use DB;
+use URL;
 use Illuminate\Routing\UrlGenerator;
 
 class publicPage extends Controller
@@ -18,6 +19,7 @@ class publicPage extends Controller
     	return view('page.about');
     }
     public function login() {
+
     	return view('page.login');
 	}
 	public function booking(Request $request) {
@@ -34,11 +36,12 @@ class publicPage extends Controller
 	public function index() {
     	return view('page.index');
 	}
-	public function blog() {
-    	return view('page.blog');
-	}
+	// public function blog() {
+ //    	return view('page.blog');
+	// }
 	public function room() {
-    	return view('page.room');
+        $room_type = RoomType::paginate(4);
+    	return view('page.room')->with('room_type', $room_type);
 	}
     public function uploadFile($file)
     {
@@ -133,6 +136,19 @@ class publicPage extends Controller
         $feedback->message = $request->input('message');
         $feedback->save();
         return redirect()->back();
+    }
+    public function singleRoom($id_room_type)
+    {
+
+        $single_room = RoomType::find($id_room_type);
+        $single_room = json_decode(json_encode($single_room),1);
+        $room = array();
+        array_push( $room,rand(2,$room_type = RoomType::count()-2));
+        array_push( $room,rand(1,$room[0]-1));
+        array_push( $room,rand($room[0]+1,RoomType::count()-1));
+        $room_type = RoomType::where('id_room_type','=',$room[0])->orwhere('id_room_type','=',$room[1])->orwhere('id_room_type','=',$room[2])->get();
+        $room_type = json_decode(json_encode($room_type),1);
+        return view('page.single-room')->with(['single_room'=>$single_room,'room_type'=>$room_type]);
     }
 }
 
