@@ -1,7 +1,7 @@
 
 @extends('master')
 @section('content')
-<div class="blog-background" style="background-image: url('source/image/bg_3.jpg');">
+<div class="blog-background" style="background-image: url('/source/image/bg_3.jpg');">
         <div class="blog">
             <h1>Room</h1>
             <a href="#">HOME</a>

@@ -3,7 +3,7 @@
 <div class="blog-background" style=" background-image: url('source/image/bg_3.jpg');">
         <div class="blog">
             <h1>About</h1>
-            <a href="#">HOME</a>
+            <a href="/">HOME</a>
             <a href="#">ABOUT</a>
         </div>
     </div>
