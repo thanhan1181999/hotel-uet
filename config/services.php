@@ -32,7 +32,7 @@ return [
     'google' => [
         'client_id' => '692122075312-o0undop48v1prso5n8a2dvovek2nugd3.apps.googleusercontent.com',
         'client_secret' => 'b_HHo_fI1X35pZ7aI8-t1I9A',
-        'redirect' => 'http://localhost/laravelFrameWork/BTLHotel/public/auth/google/callback',
+        'redirect' => 'http://hotel-uet.herokuapp.com/auth/google/callback',
     ],
 
 ];

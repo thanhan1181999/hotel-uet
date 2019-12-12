@@ -41,8 +41,7 @@ class adminController extends Controller
             return redirect('admin/quanly/feedback');
         }
         elseif ($option=='booking_details') {
-            $booking = Booking::All();
-            $booking = json_decode(json_encode($booking),true);
+            $booking = Booking::paginate(6);
             return view('admin.booking_details')->with('booking',$booking);
         }
         elseif ($option=='delete_booking') {

@@ -12,11 +12,11 @@
                     <label for="">Email</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="password" required id="password">
+                    <input type="text" name="password" required id="password">
                     <label for="">Password</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="repassword" required id="repassword">
+                    <input type="text" name="repassword" required id="repassword">
                     <label for="">RePassword</label>
                 </div>
                 <button type="submit">Get Password</button>

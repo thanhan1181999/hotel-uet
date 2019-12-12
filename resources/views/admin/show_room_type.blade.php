@@ -6,7 +6,7 @@
       <tr>
         <th>Stt</th>
         <th>Room type</th>
-        <th>Số phòng trống</th>
+{{--         <th>Số phòng trống</th> --}}
         <th>Hình ảnh</th>
         <th>Giá</th>
         <th>Trích dẫn</th>
@@ -19,8 +19,8 @@
       <tr>
         <td>{{$value['id_room_type']}}</td>
         <td>{{$value['room_type']}}</td>
-        <td>{{$value['so_phong_trong']}}</td>
-        <td><image src="{{$value['image_room']}}"></td>
+        {{-- <td>{{$value['so_phong_trong']}}</td> --}}
+        <td><img src="{{$value['image_room']}}" alt="" class="img-fluid"></td>
         <td>{{$value['price']}}</td>
         <td>{{$value['trich_dan']}}</td>
         <td>{{$value['dien_tich']}}</td>

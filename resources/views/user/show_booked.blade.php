@@ -12,7 +12,7 @@
         <th>check_in_date</th>
         <th>check_in_time</th>
         <th>check_out_date</th>
-        <th>accepted</th>
+        <th>thanhtoan</th>
         <th>created_at</th>
       </tr>
     </thead>
@@ -27,7 +27,11 @@
         <td>{{$value['check_in_date']}}</td>
         <td>{{$value['check_in_time']}}</td>
         <td>{{$value['check_out_date']}}</td>
-        <td>{{$value['accepted']}}</td>
+        <td>@if ($value['thanhtoan']==true)
+            Đã thanh toán
+            @else
+            Chưa thanh toán
+        @endif</td>
         <td>{{$value['created_at']}}</td>
         {{-- gui len de xac nhan da chap nhan feedback --}}
         <td>

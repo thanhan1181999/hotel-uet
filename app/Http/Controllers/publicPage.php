@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Account;
 use App\Booking;
+use App\BookingRoom;
 use App\Feedback;
 use App\Room;
 use App\RoomType;
@@ -15,6 +16,7 @@ use Illuminate\Routing\UrlGenerator;
 
 class publicPage extends Controller
 {
+
     public function about(){
     	return view('page.about');
     }
@@ -22,27 +24,31 @@ class publicPage extends Controller
 
     	return view('page.login');
 	}
-	public function booking(Request $request) {
+	public function booking(Request $request,$id_room_type=null) {
         if (Session::has('login')) {
             $id_ac=$request->session()->get('id_ac');
         }
-        
         $account = Account::find($id_ac);
         $room_type = RoomType::All();
-
-        
-        if( isset(  $_GET['room_type']) ){
-            $x = RoomType::where('room_type', $_GET['room_type'])->get();
-            return view('page.booking')->with(['account'=>$account,'room_type_selected'=>$_GET['room_type'],'id_room_type_selected'=>$x]);
-        }
-             else 
-            return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type]);
+        $id_selected = $id_room_type;
+    	return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type,'id_selected'=>$id_selected]);
 	}
 	public function register() {
     	return view('page.register');
 	}
 	public function index() {
-    	return view('page.index');
+        $time_now=date("Y-m-d", time());// lay thoi gian hien tai
+        $booking = Booking::where('check_out_date','<',$time_now)->get();
+        foreach ($booking as $value) {
+            $room = Room::where('room_no','=',$value->room_no)->first();
+            $room->so_booking = $room->so_booking-1;
+            $room->save();
+            $value->delete();
+        }
+
+        $room_type = RoomType::All();
+        $room_type = json_decode(json_encode($room_type),1);
+    	return view('page.index')->with(['room_type'=>$room_type]);
 	}
 	// public function blog() {
  //    	return view('page.blog');
@@ -66,10 +72,7 @@ class publicPage extends Controller
             return $path;
         }
     }
-    public function getregister() {
-        return view('page.register');
-    }
-    public function postdangki(Request $req){
+    public function dangki(Request $req){
         $path='';
         if ($req->hasFile('avatar')) {
             $file = $req->avatar; // lấy các giá trị của file về
@@ -111,6 +114,8 @@ class publicPage extends Controller
     }
     public function postbooking(Request $request)
     {
+        $time_now=date("Y-m-d", time());// lay thoi gian hien tai
+
         if (Session::has('login')) {
             $id_ac=$request->session()->get('id_ac');
         }
@@ -118,29 +123,30 @@ class publicPage extends Controller
         $room_type = $request->input('room_type');
         $check_in_date = $request->input('check_in_date');
         $check_out_date = $request->input('check_out_date');
-
-        if($check_in_date > $check_out_date){
-            $account = Account::find($id_ac);
-            $room_type = RoomType::All();
-            $thongbao="Ngày check in không được lớn hơn ngày check out";
-            return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type,'thongbao'=>$thongbao]);
-        }
-
-        $room_no_of_type = Room::where('id_room_type','=',$room_type)
-        ->where('is_rental','=',0)->where('check_out_date_permit', '>=', $check_out_date)
-        ->where('check_in_date_permit', '<=', $check_in_date)
-        ->first();
+        $room_no_of_type = Booking::where('room_type','=',$room_type)->where('check_out_date','>',$time_now)->where('check_out_date','<',$check_in_date)->first();
         $room_no_of_type = json_decode(json_encode($room_no_of_type),1);//chuyen ve dang array
-        
-        if (empty($room_no_of_type)) {
-            $account = Account::find($id_ac);
-            $room_type = RoomType::All();
-            $thongbao="Loại phòng vừa đặt đã hết";
-            return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type,'thongbao'=>$thongbao]);
+
+        if ($room_no_of_type) {
+
         }
-        else
-        {   
-            $booking = new Booking();
+        else{
+             $room_no_of_type = Booking::where('room_type','=',$room_type)->where('check_out_date','>',$time_now)->where('check_in_date','>',$check_out_date)->first();
+             if ($room_no_of_type) {
+
+            }
+            else
+            {
+                $room_no_of_type =Room::where('id_room_type','=',$room_type)->where('so_booking','=',0)->first();
+                if ($room_no_of_type) {
+                }
+                else{
+                    return redirect()->back()->with('thatbai','Loại phòng này không còn phòng trống');
+                }
+            }
+        }
+
+
+        $booking = new Booking();
         $booking->id_ac = $id_ac;
         $booking->name = $request->input('name');
         $booking->phone = $request->input('phone');
@@ -154,17 +160,15 @@ class publicPage extends Controller
         $booking->room_no = $room_no_of_type['room_no'];
         $booking->save();
 
-        $room = Room::where('room_no','=',$booking->room_no)
-                    ->update(['is_rental'=>1]);
-            $thongbao="Đã đạt phòng thành công";
-            return view('page.index')->with(['thongbao'=>$thongbao]);
-        }
-       
+        $room = Room::where('room_no','=',$booking->room_no)->first();
+        $room->so_booking = $room->so_booking+1;
+        $room->save();
 
-        
+        $room_type_ = RoomType::find($room_type);
+        $amount = $room_type_->price;
 
-      
-        return redirect()->back();
+        session(['cost_id' => $booking->id_bk]);
+        return view('page.thanh_toan')->with(['amount'=>$amount]);
     }
     public function postFeedback(Request $request)
     {
@@ -189,5 +193,105 @@ class publicPage extends Controller
         $room_type = json_decode(json_encode($room_type),1);
         return view('page.single-room')->with(['single_room'=>$single_room,'room_type'=>$room_type]);
     }
+    public function creatPay(Request $request)
+    {
+
+        session(['url_prev' => url()->previous()]);
+        $vnp_TmnCode = "1EX1SQNP"; //Mã website tại VNPAY
+        $vnp_HashSecret = "YOJSYYPXDIQEVMZTQNRXCITWDWZGRPUF"; //Chuỗi bí mật
+        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl = "http://hotel-uet.herokuapp.com/return-vnpay";
+        $vnp_TxnRef = date('YmdHis'); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+        $vnp_OrderType = 'billpayment';
+        $vnp_Amount =  $request->input('amount')*2000000;
+        $vnp_Locale = 'vn';
+        $vnp_IpAddr = request()->ip();
+
+        $inputData = array(
+            "vnp_Version" => "2.0.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => $vnp_Locale,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef,
+        );
+
+        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+            $inputData['vnp_BankCode'] = $vnp_BankCode;
+        }
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . $key . "=" . $value;
+            } else {
+                $hashdata .= $key . "=" . $value;
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
+
+        $vnp_Url = $vnp_Url . "?" . $query;
+        if (isset($vnp_HashSecret)) {
+           // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+            $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+        }
+        // echo '<pre>';
+        // var_dump($inputData);
+        // echo '</pre>';
+        // echo $vnp_Url;
+        // die();
+        return redirect($vnp_Url);
+    }
+    public function returnVNPay(Request $request)
+    {
+        if($request->vnp_ResponseCode == "00") {
+            $booking = Booking::where('id_bk','=',Session::get('cost_id'))->update(['thanhtoan'=>true]);
+            return redirect()->back()->with('success' ,'Đã thanh toán phí dịch vụ');
+        }
+        return redirect()->back()->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+    }
+    // public function suggestRoom(Request $request)
+    // {
+    //     $check_in_date = $request->input('check_in_date');
+    //     $check_out_date = $request->input('check_out_date');
+    //     $room_type_id = $request->input('room_type_id')
+    //     // $time_now=date("Y-m-d", time());
+    //     // $room_type_trong = Booking::where('check_out_date','>',$time_now)->where('check_out_date','<',$check_in_date)->orWhere('check_in_date','>',$check_out_date)->get();
+    //     $room_no_of_type = Booking::where('room_type','=',$room_type_id)->where('check_out_date','>',$time_now)->where('check_out_date','<',$check_in_date)->first();
+    //     if ($room_no_of_type) {
+    //         $room_type = RoomType::find($room_type_id);
+    //         return view('page.room')->with(['room_type'=>$room_type]);
+    //     }
+    //     else{
+    //          $room_no_of_type = Booking::where('room_type','=',$room_type_id)->where('check_out_date','>',$time_now)->where('check_in_date','>',$check_out_date)->first();
+    //          if ($room_no_of_type) {
+    //             $room_type = RoomType::find($room_type_id);
+    //             return view('page.room')->with(['room_type'=>$room_type]);
+    //         }
+    //         else
+    //         {
+    //             $room_no_of_type =Room::where('id_room_type','=',$room_type_id)->where('so_booking','=',0)->first();
+    //             if ($room_no_of_type) {
+    //                 $room_type = RoomType::find($room_type_id);
+    //                 return view('page.room')->with(['room_type'=>$room_type]);
+    //             }
+    //             else{
+    //                 $room_type = RoomType::paginate(4);
+    //                 return view('page.room')->with(['khongco'=>'Loại phòng này không còn phòng trống. Qúy khách vui lòng lựa chọn loại phòng khác!','room_type'=>$room_type]);
+    //             }
+    //         }
+    //     }
+    // }
 }
 

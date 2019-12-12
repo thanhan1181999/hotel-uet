@@ -10,11 +10,14 @@ class QrCodeController extends Controller
     public function getQrCode()
     {
         $storeSlug='MOMOE3HD20191208-storeid01';
-        $amount=0;
-        $billId = 'billid01';
-
-        echo hash_hmac('SHA256', "storeSlug=$storeSlug&amount=$amount&billId=$billId", 'cJVXM3eI02jZTZiah2acBeG3EISyUMnf');
-        $qrCode = QrCode::size(250)->generate('https://test-payment.momo.vn/pay/store/MOMOE3HD20191208-storeid01?a=0&b=billid01&s=e2f8e04f0d04518722044665d4ddbd6610dfa5904bea385c0c8e06fb8ddc7f6a');
+        $amount=1000;
+        $billId = 'B001221';
+        $secret_key = 'cJVXM3eI02jZTZiah2acBeG3EISyUMnf';
+        $signature = "storeSlug=$storeSlug&amount=$amount&billId=$billId";
+        echo $signature;
+        $signature = hash_hmac('sha256',$signature, $secret_key);
+        $qrCode = QrCode::size(250)->generate("https://test-payment.momo.vn/pay/store/$storeSlug");
+        echo "https://test-payment.momo.vn/pay/store/$storeSlug?a=1000&b=$billId&s= $signature";
         return view('page.qrCode',compact('qrCode'));
     }
 

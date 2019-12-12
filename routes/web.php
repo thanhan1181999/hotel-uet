@@ -4,7 +4,7 @@ Route::get('/','publicPage@index');
 Route::get('/index','publicPage@index');
 Route::get('/about','publicPage@about');
 Route::get('/login','publicPage@login')->name('login');
-Route::get('/register','publicPage@getregister');
+Route::get('/register','publicPage@register');
 Route::get('/blog','UserController@showBlog');
 Route::get('/room','publicPage@room');
 Route::get('/single_room/{id_room_type}','publicPage@singleRoom');
@@ -26,7 +26,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 });
 //route user
 Route::group(['prefix'=>'user','middleware'=>'userLogin'],function(){
-    Route::get('/booking_form','publicPage@booking');
+    Route::get('/booking_form/{id_room_type?}','publicPage@booking');
     Route::get('/profile','UserController@showProfileUser');
     Route::get('/phong_da_book','UserController@showPhongDaBook');
     Route::get('/delete_booked/{id}','UserController@deleteBooked')->name('delete_booked');
@@ -34,7 +34,7 @@ Route::group(['prefix'=>'user','middleware'=>'userLogin'],function(){
 });
 //login hander,when login success, session setted with variable 'login'
 Route::post('dangnhap','UserController@login')->name('dangnhap');
-Route::post('register', 'publicPage@postdangki')->name('dangki');
+Route::post('register', 'publicPage@dangki');
 Route::post('booking', 'publicPage@postbooking')->name('booking');
 Route::post('feedback', 'publicPage@postFeedback')->name('feedback');
 Route::post('setpassword','UserController@setPassword')->name('setpassword');
@@ -42,3 +42,6 @@ Route::put('setpassword','UserController@putPassword')->name('postpassword');
 Route::get('/auth/{provider}','SocialAuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback','SocialAuthController@handleProviderCallback');
 Route::get('/qr-code','QrCodeController@getQrCode');
+Route::get('/return-vnpay','publicPage@returnVNPay')->name('return-vnpay');
+Route::post('creat_pay','publicPage@creatPay')->name('creat_pay');
+Route::post('suggest_room','publicPage@suggestRoom')->name('suggest_room');

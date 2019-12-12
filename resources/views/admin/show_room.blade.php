@@ -15,7 +15,7 @@
         <td>{{$value['room_no']}}</td>
         <td>{{$value['id_room_type']}}</td>
         <td>@php
-          if ($value['is_rental']) {
+          if ($value['so_booking']>0) {
             echo 'Đã được thuê';
           }
           else {
