@@ -8,7 +8,14 @@
                 <div class="formheader text-xs-center" style="color: black;">
                     <h1>Register</h1>
                 </div>
-                <form class="form-group" method="POST" enctype="multipart/form-data" style="padding: 30px;">
+                @if(count($errors) > 0)
+                    <div class='alert alert-danger '>
+                        @foreach($errors->all() as $err)
+                            {{$err}}<br />
+                        @endforeach
+                    </div>
+                @endif
+                <form class="form-group" action="{{route('dangki')}}" method="POST" enctype="multipart/form-data" style="padding: 30px;">
                     @csrf
                         <div class="form-group">
                             <span style="position: absolute;padding-left: 20px; color: orange;">Name</span>
@@ -68,6 +75,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <span style="position: absolute;padding-left: 20px; color: orange;">Avatar Profile</span>
                             <input type="file" class="form-control" name="avatar" id="avatar" style="height: 60px; padding-top: 30px; padding-left: 20px;border-radius: 30px;">

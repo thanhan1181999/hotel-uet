@@ -3,17 +3,17 @@
  @php
         $path = url('').'/';
     @endphp
-<div class="blog-background" style="background-image: url('{{ $path }}/source/image/bg_3.jpg');">
+<div class="blog-background" style="background-image: url('/source/image/3.jpg');">
         <div class="blog">
             <h1>Room</h1>
-            <a href="#">HOME</a>
+            <a href="/">HOME</a>
             <a href="#">ROOM</a>
         </div>
     </div>
     <div class="container single-room">
         <div class="row">
             <div class="col-sm-10">
-                <h1 class="title-room">PHÒNG GRAND DELUXE</h1>
+                <h1 class="title-room">Phòng {{$single_room['room_type']}}</h1>
                 <div class="row" style="padding-bottom: 80px;
                                         border-bottom: 3px solid grey;">
                     <div class="col-sm-6">
@@ -95,7 +95,7 @@
                         </ul>
                         <div class="price">
                             <p>Giá từ</p><span>${{$single_room['price']}}</span>
-                            <a href=""><button type="button" class="btn btn-primary">Đặt phòng ngay</button></a>
+                            <a href="/user/booking_form?room_type={{$single_room['room_type']}}"><button type="button" class="btn btn-primary">Đặt phòng ngay</button></a>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         <h4>{{$value['room_type']}}</h4>
                         <img src="{{$value['image_room']}}" width="100%">
                         <p>{{$value['trich_dan']}}</p>
-                        <a href="#">Xem thêm &rarr;</a>
+                        <a href="/single_room/{{$value['id_room_type']}}">Xem thêm &rarr;</a>
                     </div>
                 @endforeach
             </div>

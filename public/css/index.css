@@ -91,6 +91,7 @@ label {
     color: white;
     background-size: cover;
     background-attachment: fixed;
+    margin-top: 9vh;
 }
 
 .info-customer {

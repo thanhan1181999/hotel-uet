@@ -14,13 +14,13 @@
             <li><a href="{{ $path }}user/booking_form">Booking</a></li>
 
             <li class="li-user">
-                <a href="{{ $path }}login">admin</a>
+                <a href="#">admin</a>
                 <ul class="ul-user">
                     <li><a href="{{ $path }}admin/quanly">Quan ly</a></li>
                 </ul>
             </li>
             <li class="li-user">
-                <a href="{{ $path }}login">user</a>
+                <a href="#">user</a>
                 <ul class="ul-user">
                     <li><a href="{{ $path }}user/profile">Profile user</a></li>
                     <li><a href="{{ $path }}user/phong_da_book">Phong da book</a></li>

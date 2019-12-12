@@ -26,9 +26,17 @@ class publicPage extends Controller
         if (Session::has('login')) {
             $id_ac=$request->session()->get('id_ac');
         }
+        
         $account = Account::find($id_ac);
         $room_type = RoomType::All();
-    	return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type]);
+
+        
+        if( isset(  $_GET['room_type']) ){
+            $x = RoomType::where('room_type', $_GET['room_type'])->get();
+            return view('page.booking')->with(['account'=>$account,'room_type_selected'=>$_GET['room_type'],'id_room_type_selected'=>$x]);
+        }
+             else 
+            return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type]);
 	}
 	public function register() {
     	return view('page.register');
@@ -58,7 +66,10 @@ class publicPage extends Controller
             return $path;
         }
     }
-    public function dangki(Request $req){
+    public function getregister() {
+        return view('page.register');
+    }
+    public function postdangki(Request $req){
         $path='';
         if ($req->hasFile('avatar')) {
             $file = $req->avatar; // lấy các giá trị của file về
@@ -106,10 +117,30 @@ class publicPage extends Controller
 
         $room_type = $request->input('room_type');
         $check_in_date = $request->input('check_in_date');
-        $room_no_of_type = Room::where('id_room_type','=',$room_type)->where('is_rental','=',0)->first();
-        $room_no_of_type = json_decode(json_encode($room_no_of_type),1);//chuyen ve dang array
+        $check_out_date = $request->input('check_out_date');
 
-        $booking = new Booking();
+        if($check_in_date > $check_out_date){
+            $account = Account::find($id_ac);
+            $room_type = RoomType::All();
+            $thongbao="Ngày check in không được lớn hơn ngày check out";
+            return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type,'thongbao'=>$thongbao]);
+        }
+
+        $room_no_of_type = Room::where('id_room_type','=',$room_type)
+        ->where('is_rental','=',0)->where('check_out_date_permit', '>=', $check_out_date)
+        ->where('check_in_date_permit', '<=', $check_in_date)
+        ->first();
+        $room_no_of_type = json_decode(json_encode($room_no_of_type),1);//chuyen ve dang array
+        
+        if (empty($room_no_of_type)) {
+            $account = Account::find($id_ac);
+            $room_type = RoomType::All();
+            $thongbao="Loại phòng vừa đặt đã hết";
+            return view('page.booking')->with(['account'=>$account,'room_type'=>$room_type,'thongbao'=>$thongbao]);
+        }
+        else
+        {   
+            $booking = new Booking();
         $booking->id_ac = $id_ac;
         $booking->name = $request->input('name');
         $booking->phone = $request->input('phone');
@@ -125,6 +156,14 @@ class publicPage extends Controller
 
         $room = Room::where('room_no','=',$booking->room_no)
                     ->update(['is_rental'=>1]);
+            $thongbao="Đã đạt phòng thành công";
+            return view('page.index')->with(['thongbao'=>$thongbao]);
+        }
+       
+
+        
+
+      
         return redirect()->back();
     }
     public function postFeedback(Request $request)

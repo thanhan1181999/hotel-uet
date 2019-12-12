@@ -50,14 +50,14 @@
                     <label for="">Email</label>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="name" required>
+                    <input type="password" name="name" required>
                     <label for="">Name</label>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="phone" required>
+                    <input type="password" name="phone" required>
                     <label for="">Phone</label>
                 </div>
-                <button type="submit">Get Password</button>
+                <button type="submit">Set Password</button>
             </form>
         </div>
     </div>

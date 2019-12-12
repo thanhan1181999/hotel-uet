@@ -82,10 +82,12 @@
           </div>
         </div>
       </div>
+      <img src="{{$account['avatar']}}" alt="" style="height:100px;width:100px;border-radius:50%;margin-left: 50%;
+    transform: translatex(-50%);">
        <div class="col-sm-6">
              <div class="form-group">
                 <span style="position: absolute;padding-left: 20px; color: orange;">Avatar Profile</span>
-                <img src="{{$account['avatar']}}" alt="" class="fluid">
+               
                 <input type="file" class="form-control" name="avatar" id="avatar" style="height: 60px; padding-top: 30px; padding-left: 20px;border-radius: 30px;">
                 <input type="hidden" value="{{$account['avatar']}}" name="old_avatar">
               </div>

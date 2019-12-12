@@ -14,184 +14,19 @@
             <h1>A Perfect Place To Stay</h1>
         </div>
     </div>
-    
+
+    @if (isset($thongbao))
+        <?php 
+            echo '<script language="javascript">';
+            echo 'alert("Bạn đã đặt phòng thành công")';
+            echo '</script>';
+        ?>    
+    @endif
         <!-- Calendar Book -->
+ 
+    
 
-    <div class="component-1">
-            <div class="container">
-                    <div class="row sub-1">
-                            <div class="col-lg-1 title"><h3 class="text-center text-danger">Reserve A Perfect Room</h3></div>
-                            <div class="col-lg-2">
-                                    <label  for="#">Check-in Date</label>
-                                    <input class="form-control" type="date" placeholder="Check-in date">
-                            </div>
-
-                            <div class="col-lg-2">
-                                   <label for="#">Check-out Date</label>
-                                    <input class="form-control" type="date" placeholder="Check-out date">
-                            </div>
-
-                            <!-- *** -->
-                            <div class="col-lg-2">
-                                    <label for="#">Room Types</label>
-                                    <select name="type-room" class="form-control">
-                                            <option value="suite">Suite</option>
-                                            <option value="family-room">Family Room</option>
-                                            <option value="deluxe-room">Deluxe Room</option>
-                                            <option value="classic-room">Classic Room</option>
-                                            <option value="superior-room">Superior Room</option>
-                                            <option value="luxury-room">Luxury Room</option>
-                                    </select>
-                            </div>
-
-                            <div class="col-lg-2">
-                                           <label for="#">Adults</label>
-                                            <select name="Adult-Type" class="form-control">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                            </select>
-
-                            </div>
-
-                            <div class="col-lg-2">
-                                <label for="#">Children</label>
-                                <select name="Children-Type" class="form-control">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                </select>
-
-                            </div>
-
-                            <div class="col-lg-1">
-                                <a href="room" class="btn custom" style="width: 100%; padding-left: 5px;">Reverse</a>
-                            </div>
-
-                    </div>
-
-            </div>
-    </div>
-
-    <!-- Slide -->
-
-    <div class="component-2">
-        <div class="container">
-           <div class="row">
-                <div class="col-sm-12 custom-text">
-                    <h1>ROOMS</h1>
-                </div>
-           </div>
-
-           <div class="row text-content">
-                <div class="col-sm-12"><h2 style="text-align: center;">Book A Room</h2></div>
-           </div>
-
-           <div class="row text-content">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <p style="font-size: 20px; text-align: center;" class="font-italic">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-                </div>
-                <div class="col-sm-1"></div>
-           </div>
-        </div>
-
-        <div class="container sub-2-2">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                        <div class="row item">
-                                                <!-- Column-1 -->
-                                            <div class="col-sm-4">
-                                                <div class="row-sm-6"><img src="source/image/1.jpg" alt="#"></div>
-                                                <div class="row-sm-1 custom-row">
-                                                    <p class="rate">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                    </p>
-                                                </div>
-                                                <div class="row-sm-1"><hr></div>
-                                                <div class="row">
-                                                        <div class="col-5 col-md-4 set-color">Giá phòng: </div>
-                                                        <div class="col-2 col-md-5 set-color">$100/đêm</div>
-                                                 </div>
-                                                <div class="row book-review">
-                                                    <div class="col-sm-3"></div>
-                                                    <div class="col-sm-4">
-                                                        <button type="button" class="btn btn-success set-size">Reverse a Room</button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Column-2 -->
-                                            <div class="col-sm-4">
-                                                    <div class="row-sm-6"><img src="source/image/2.jpg" alt="#"></div>
-                                                    <div class="row-sm-1 custom-row">
-                                                        <p class="rate">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                        </p>
-                                                    </div>
-                                                    <div class="row-sm-1"><hr></div>
-                                                    <div class="row">
-                                                            <div class="col-5 col-md-4 set-color">Giá phòng: </div>
-                                                            <div class="col-2 col-md-5 set-color">$200/đêm</div>
-                                                     </div>
-                                                    <div class="row book-review">
-                                                        <div class="col-sm-3"></div>
-                                                        <div class="col-sm-4">
-                                                                <button type="button" class="btn btn-success set-size">Reverse a Room</button>
-                                                        </div>
-                                                    </div>
-
-                                            </div>
-
-                                            <!-- Column-3 -->
-                                            <div class="col-sm-4">
-                                                    <div class="row-sm-6"><img src="source/image/3.jpg" alt="#"></div>
-                                                    <div class="row-sm-1 custom-row">
-                                                        <p class="rate">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                        </p>
-                                                    </div>
-                                                    <div class="row-sm-1"><hr></div>
-                                                    <div class="row">
-                                                            <div class="col-5 col-md-4 set-color">Giá phòng: </div>
-                                                            <div class="col-2 col-md-5 set-color">$300/đêm</div>
-                                                     </div>
-                                                    <div class="row book-review">
-                                                        <div class="col-sm-3"></div>
-                                                        <div class="col-sm-4">
-                                                        <button type="button" class="btn btn-success set-size">Reverse a Room</button>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                </div>
-                        </div>
+  
                         <div class="carousel-item">
                                 <div class="row item">
                                         <!-- Column-1 -->

@@ -1,10 +1,10 @@
 
 @extends('master')
 @section('content')
-<div class="blog-background" style="background-image: url('/source/image/bg_3.jpg');">
+<div class="blog-background" style="background-image: url('/source/image/3.jpg');">
         <div class="blog">
             <h1>Room</h1>
-            <a href="#">HOME</a>
+            <a href="/">HOME</a>
             <a href="#">ROOM</a>
         </div>
     </div>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="price">
                             <p>Giá từ</p><span>${{$element['price']}}/đêm</span>
-                           <a href="booking_form" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
+                           <a href="/user/booking_form?room_type={{$element['room_type']}}" class="btn btn-primary" style="float: right;">Đặt phòng ngay</a>
                         </div>
                     </div>
                  @endforeach

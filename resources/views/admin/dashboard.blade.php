@@ -32,7 +32,7 @@
             <li><a href="{{ $path }}admin/quanly/room">Room</a></li>
             <li><a href="{{ $path }}admin/quanly/room_type">Room Type</a></li>
             <li><a href="{{ $path }}admin/quanly/booking_details">Booking Details</a></li>
-            <li><a href="{{ $path }}admin/quanly/blog">Blog</a></li>
+            <!-- <li><a href="{{ $path }}admin/quanly/blog">Blog</a></li>
             <li><a href="{{ $path }}admin/quanly/slider">Slider</a></li>
       {{-- <li><a href="#">Payment</a></li> --}}
             <li class="dropdown">
@@ -41,7 +41,7 @@
                   <li><a href="#">Logo Update</a></li>
                   <li><a href="#">Address Update</a></li>
               </ul>
-            </li>
+            </li> -->
           </div>
           <div class="col-md-9">
             @yield('table-option')
