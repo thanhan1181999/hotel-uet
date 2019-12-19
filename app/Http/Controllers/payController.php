@@ -10,14 +10,6 @@ class payController extends Controller
 {
     //
     #đoạn này copy
-    function caculatePrice($price,$unit) {
-        if($unit=='USD') return round($price*20000);#USD
-        return round($price);#VNĐ
-    }
-    #tính độ lệch ngày $date với hôm nay
-    function date_diff_now($date) {
-        return date_diff(date_create($date),date_create(date('Y-m-d')))->format("%a");
-    }
     function checkInfoPay() {
         if(isset($_GET['id'])){
             $account_roomtype=account_roomtype::find($_GET['id']);

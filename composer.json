@@ -10,10 +10,10 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^6.3.0",
+        "laravel/framework": "^6.2",
+        "laravel/helpers": "^1.1",
         "laravel/socialite": "^4.3",
-        "laravel/tinker": "^1.0",
-        "simplesoftwareio/simple-qrcode": "^2.0"
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -39,6 +39,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+                "app/my_function/function.php"
         ]
     },
     "autoload-dev": {
