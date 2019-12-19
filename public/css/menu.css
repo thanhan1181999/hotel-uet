@@ -83,13 +83,14 @@ nav a {
         right: 0;
         height: 92vh;
         top: 8vh;
-        background-color: #5d4954;
+        background-color: hsl(327, 12%, 33%);
         flex-direction: column;
         align-items: center;
         width: 50%;
         transform: translateX(100%);
         transition: transform 0.5s ease;
         z-index: 1000;
+        display: none;
     }
     .nav-links li {
         opacity: 0;
@@ -112,6 +113,10 @@ nav a {
     to {
         opacity: 1;
     }
+}
+
+.displayBlock {
+    display: flex!important;
 }
 
 .nav-active {
