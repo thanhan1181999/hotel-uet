@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class account extends Model
 {
-    protected $table = 'account';
-    public $primaryKey = 'id_ac';
-    protected $guarded = ['type_ac'];
-    public $timestamps = false;
-
+    //
+    protected $table='account';
+    public $timestamps=false;
+    function account_roomtype() {
+    	return $this->hasMany('App\account_roomtype','id_account','id');
+    }
 }

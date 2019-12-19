@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class blog extends Model
 {
     //
-    protected $table = 'blog';
-    public $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table='blog';
+    public $timestamps=false;
 }

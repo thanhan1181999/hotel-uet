@@ -58,19 +58,6 @@ body {
 }
 
 
-/* .pagination {
-    display: block;
-    text-align: center;
-}
-
-.pagination li {
-    display: inline-block;
-    border: 3px solid green;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding-top: 7px;
-} */
 
 .img-title {
     width: 80px;
@@ -80,11 +67,7 @@ body {
 }
 
 .popular-blog {
-    margin-bottom: 60px;
-}
-
-.popular-blog div {
-    display: inline;
+    margin-bottom: 40px;
 }
 
 .popular-blog div span {
@@ -92,12 +75,13 @@ body {
     font-size: 17px;
     font-weight: 500;
     height: auto;
-    float: left;
-    width: calc(100% - 100px);
+/*    float: left;
+    width: calc(100% - 100px);*/
 }
 
 .infor-blog {
     font-size: 12px;
+    margin-top: 10px;
 }
 
 .infor-blog a {
@@ -106,18 +90,36 @@ body {
     margin-right: 12px;
 }
 
-form .form-blog {
-    margin: 20px 5% 50px 5%;
-    border: 7px groove lightgrey;
-    text-align: center;
+/* Style the search field */
+form.search input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
 }
 
-form .form-blog input {
-    border-style: none;
-    width: 90%;
-    height: 30px;
+/* Style the submit button */
+form.search button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
 }
 
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/*form {
+    margin-bottom: 30px;
+}*/
 .categories {
     margin-bottom: 50px;
     padding: 0px;

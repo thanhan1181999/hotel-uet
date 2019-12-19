@@ -1,0 +1,45 @@
+.content-room, .room-other	 {
+	font-family: Monospace;
+	font-size: 18px;
+}
+.room-other {
+	font-size: 14px;
+}
+.price p {
+	display: inline-block;
+}
+.price button {
+    float: right;
+}
+.price span {
+    margin-left: 20px;
+    font-size: 30px;
+    font-variant: small-caps;
+}
+.single-room .title-room {
+	margin-top: 41px;
+	margin-bottom: 20px;
+	font-weight: 550;
+}
+.slide-img-room {
+	margin-bottom: 7%;
+}
+@media screen and (min-width: 530px) {
+  .slide-img-room {
+    float: left;
+    margin: 0px 7% 7% 0px;
+    padding-top: 10px;
+  }
+}
+/*.service-room {
+	margin-top: 50px;
+	margin: 0px auto;
+}
+.service-room .service-room-single {
+	margin: 20px auto;
+	text-align: center;
+}
+.service-room .service-room-single .name-service {
+	font-family: Monospace;
+	font-size: 18px;
+}*/

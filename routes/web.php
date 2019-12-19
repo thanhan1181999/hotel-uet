@@ -1,47 +1,74 @@
 <?php
-//public route
-Route::get('/','publicPage@index');
-Route::get('/index','publicPage@index');
-Route::get('/about','publicPage@about');
-Route::get('/login','publicPage@login')->name('login');
-Route::get('/register','publicPage@register');
-Route::get('/blog','UserController@showBlog');
-Route::get('/room','publicPage@room');
-Route::get('/single_room/{id_room_type}','publicPage@singleRoom');
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-//route admin
-Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
-    Route::get('/quanly/{option?}/{id?}','adminController@quanly');
-        // function($option=null) {
-        // return view('admin.dashboard');
-    // });
-    // update_ad_password
-    Route::post('/quanly/update_ad_password','adminController@updateAdPassword')->name('update_ad_password');
-    Route::post('/quanly/insert_room_type','adminController@insertRoomType')->name('insert_room_type');
-    Route::post('/quanly/edit_room_type','adminController@editRoomType')->name('edit_room_type');
-    Route::post('/quanly/delete_room_type','adminController@editRoomType')->name('delete_room_type');
-    Route::post('/quanly/insert_room','adminController@insertRoom')->name('insert_room');
-    Route::post('/quanly/edit_room','adminController@editRoom')->name('edit_room');
+Route::get('/', 'pageController@getHome');
+Route::get('home', 'pageController@getHome');
+Route::get('about', 'pageController@getAbout');
+Route::get('blog','pageController@getBlog');
+Route::get('room','pageController@getRoom')->name('room');
+Route::get('single_room/{id}','pageController@getDetailRoom');
+Route::group(['prefix'=>'ajax'],function() {
+	Route::get('room_type/{id}','ajaxController@getRoomType');
 });
-//route user
-Route::group(['prefix'=>'user','middleware'=>'userLogin'],function(){
-    Route::get('/booking_form/{id_room_type?}','publicPage@booking');
-    Route::get('/profile','UserController@showProfileUser');
-    Route::get('/phong_da_book','UserController@showPhongDaBook');
-    Route::get('/delete_booked/{id}','UserController@deleteBooked')->name('delete_booked');
-    Route::post('/edit_profile_user','UserController@editProfileUser')->name('edit_profile_user');
+Route::post('feedback','pageController@postFeedback');
+Route::post('suggest','pageController@suggestRoom');
+// Route::get('login','pageController@login');
+// đăng nhập qua facebook, google
+Route::get('redirect/{social}', 'loginController@redirect');
+Route::get('callback/{social}', 'loginController@callback');
+Route::get('logout','logoutController@logout');
+Route::get('profile','accountController@showProfile')->name('profile');
+Route::post('editProfile','accountController@editProfile');
+Route::group(['prefix'=>'account','middleware'=>'login'],function() {
+	Route::post('booking','accountController@booking');
+	Route::get('phong_da_book','accountController@showBooked');
+	Route::get('deletebooked','accountController@deletebooked');
+	Route::post('create_pay','payController@create_pay');
+	Route::get('return_vnpay','payController@return_vnpay');
+	Route::get('thanhtoan', 'payController@checkInfoPay');
 });
-//login hander,when login success, session setted with variable 'login'
-Route::post('dangnhap','UserController@login')->name('dangnhap');
-Route::post('register', 'publicPage@dangki');
-Route::post('booking', 'publicPage@postbooking')->name('booking');
-Route::post('feedback', 'publicPage@postFeedback')->name('feedback');
-Route::post('setpassword','UserController@setPassword')->name('setpassword');
-Route::put('setpassword','UserController@putPassword')->name('postpassword');
-Route::get('/auth/{provider}','SocialAuthController@redirectToProvider');
-Route::get('/auth/{provider}/callback','SocialAuthController@handleProviderCallback');
-Route::get('/qr-code','QrCodeController@getQrCode');
-Route::get('/return-vnpay','publicPage@returnVNPay')->name('return-vnpay');
-Route::post('creat_pay','publicPage@creatPay')->name('creat_pay');
-Route::post('suggest_room','publicPage@suggestRoom')->name('suggest_room');
+Route::group(['prefix'=>'admin','middleware'=>'loginadmin'], function() {
+	Route::group(['prefix'=>'quanly'],function() {
+		Route::get('/', 'adminController@showQuanLy');
+		#feedback
+		Route::get('feedback','adminController@feedback');
+		Route::get('delete_feedback','adminController@delete_feedback');
+		#room_type
+		Route::get('room_type','adminController@room_type');
+		Route::get('xoa_room_type','adminController@xoa_room_type');
+		Route::get('sua_room_type','adminController@getsua_room_type');
+		Route::post('sua_room_type','adminController@postsua_room_type');
+		Route::get('them_room_type','adminController@getthem_room_type');
+		Route::post('them_room_type','adminController@postthem_room_type');
+		#blog
+		Route::get('blog','adminController@blog');
+		Route::get('xoa_blog','adminController@xoa_blog');
+		Route::get('sua_blog','adminController@getsua_blog');
+		Route::post('sua_blog','adminController@postsua_blog');
+		Route::get('them_blog','adminController@getthem_blog');
+		Route::post('them_blog','adminController@postthem_blog');
+		#room
+		Route::get('room','adminController@room');
+		Route::get('xoa_room','adminController@xoa_room');
+		Route::get('sua_room','adminController@getsua_room');
+		Route::post('sua_room','adminController@postsua_room');
+		Route::get('them_room','adminController@getthem_room');
+		Route::post('them_room','adminController@postthem_room');
+		#booking_details
+		Route::get('booking_details','adminController@booking_details');
+		Route::get('delete_booked','adminController@delete_booked');
+		#handle checkin, out at hotel
+		Route::get('check_ỉn_room','adminController@check_ỉn_room');
+		Route::get('check_out_room','adminController@check_out_room');
+	});
+});

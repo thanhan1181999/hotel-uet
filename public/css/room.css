@@ -15,12 +15,12 @@
     font-family: Monospace;
     font-size: 17px;
 }
-.price p {
+/*.price p {
     display: inline-block;
-}
-.price button {
+}*/
+/*.price button {
     float: right;
-}
+}*/
 .price span {
     margin-left: 20px;
     font-size: 30px;

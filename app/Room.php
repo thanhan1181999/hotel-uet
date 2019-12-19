@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class room extends Model
 {
-    protected $table = 'room';
-    public $primaryKey = 'room_no';
-    public $timestamps = false;
+    //
+    protected $table='room';
+    public $timestamps=false;
 }

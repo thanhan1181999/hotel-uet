@@ -64,8 +64,8 @@ nav a {
 
 
 /*
-	max width : a; giới hạn khoảng trên của width để media có thể thực hiện
-	min width : a; giới hạn khoảng dưới để media có thể thực hiện
+    max width : a; giá»›i háº¡n khoáº£ng trÃªn cá»§a width Ä‘á»ƒ media cÃ³ thá»ƒ thá»±c hiá»‡n
+    min width : a; giá»›i háº¡n khoáº£ng dÆ°á»›i Ä‘á»ƒ media cÃ³ thá»ƒ thá»±c hiá»‡n
 */
 
 @media screen and (max-width: 1024px) {
@@ -131,7 +131,7 @@ nav a {
 }
 
 
-/*phần header*/
+/*pháº§n header*/
 
 .header {
     min-height: 100vh;
@@ -191,19 +191,19 @@ nav a {
 }
 
 .header .h-right .owl-item-1 {
-    background-image: url('../source/image/bg_1.jpg');
+    background-image: url('../images/home/background/bg_1.jpg');
 }
 
 .header .h-right .owl-item-2 {
-    background-image: url('../source/image/bg_2.jpg');
+    background-image: url('../images/home/background/bg_2.jpg');
 }
 
 .header .h-right .owl-item-3 {
-    background-image: url('../source/image/bg_3.jpg');
+    background-image: url('../images/home/background/bg_3.jpg');
 }
 
 .header .h-right .owl-item-4 {
-    background-image: url('../source/image/bg_4.jpg');
+    background-image: url('../images/home/background/bg_4.jpg');
 }
 
 .header .h-right .owl-dots {

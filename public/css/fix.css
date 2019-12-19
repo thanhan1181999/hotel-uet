@@ -1,0 +1,13 @@
+/*dung xu ly phan tu float*/
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/*sua nav trong phan trang theo paginate*/
+.fixpaginate nav {
+    position: static;
+}
+.fixpaginate {
+	text-align: center;
+}
