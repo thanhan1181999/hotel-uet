@@ -49,31 +49,31 @@
                 <h5 class="text-primary">Feedback</h5><br>
                 <form class="border-info" action="feedback" method="post">
                     {{csrf_field()}}
-                  <div class="input-group mb-1">
+                  <div class="input-group mb-1" style="z-index:0!important">
                           <div class="input-group-prepend">
                             <span class="input-group-text border border-primary text-primary">Name</span>
                           </div>
                           <input type="text" class="form-control border border-primary" name="name" required>
                    </div>
-                    <div class="input-group mb-1">
+                    <div class="input-group mb-1" style="z-index:0!important">
                           <div class="input-group-prepend">
                             <span class="input-group-text border border-primary text-primary">Email&nbsp;</span>
                           </div>
                           <input type="email" class="form-control border border-primary" name="email" required>
                    </div>
-                    <div class="input-group mb-1">
+                    <div class="input-group mb-1" style="z-index:0!important">
                           <div class="input-group-prepend">
                             <span class="input-group-text border border-primary text-primary">Phone</span>
                           </div>
                           <input type="text" class="form-control border border-primary" name="phone" required>
                    </div>
 
-                   <div class="input-group">
+                   <div class="input-group" style="z-index:0!important">
                       <textarea class="form-control border border-primary" placeholder="Message" name="message" required></textarea>
                     </div>
 
 {{--                   xóa cookie đã click khi gửi feedback --}}
-                  <button type="submit" class="btn btn-outline-primary button-feedback" style="position: absolute;">
+                  <button type="submit" class="btn btn-outline-primary button-feedback" style="position: absolute;z-index:0!important">
                         <i class='fa fa-send-o' style='font-size:32px'></i>
                         Send
                     </button>
