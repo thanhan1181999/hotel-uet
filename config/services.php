@@ -32,11 +32,11 @@ return [
     'facebook' => [
         'client_id' => '610585633012694',
         'client_secret' => 'b42ddd34d63d96720e0ab8e989cbdb41',
-        'redirect' => 'http://localhost/btl/public/callback/facebook',
+        'redirect' => 'http://hotel-uet.herokuapp.com/callback/facebook',
     ],
     'google' => [
         'client_id' => '934276136656-ani38dg1tmeusg658omtm8ke1s3073o0.apps.googleusercontent.com',
         'client_secret' => 'qBdN_iVRhC8F42cMLbCp5hIF',
-        'redirect' => 'http://localhost/btl/public/callback/google',
+        'redirect' => 'http://hotel-uet.herokuapp.com/callback/google',
     ],
 ];
