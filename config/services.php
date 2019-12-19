@@ -35,8 +35,8 @@ return [
         'redirect' => 'http://hotel-uet.herokuapp.com/callback/facebook',
     ],
     'google' => [
-        'client_id' => '934276136656-ani38dg1tmeusg658omtm8ke1s3073o0.apps.googleusercontent.com',
-        'client_secret' => 'qBdN_iVRhC8F42cMLbCp5hIF',
+        'client_id' => '692122075312-o0undop48v1prso5n8a2dvovek2nugd3.apps.googleusercontent.com',
+        'client_secret' => 'b_HHo_fI1X35pZ7aI8-t1I9A',
         'redirect' => 'http://hotel-uet.herokuapp.com/callback/google',
     ],
 ];
