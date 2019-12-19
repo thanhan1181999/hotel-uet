@@ -30,8 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => '610585633012694',
-        'client_secret' => 'b42ddd34d63d96720e0ab8e989cbdb41',
+        'client_id' => '446832622912027',
+        'client_secret' => '613f044c29bb3fcd09ce297ff4201aaa',
         'redirect' => 'http://hotel-uet.herokuapp.com/callback/facebook',
     ],
     'google' => [
