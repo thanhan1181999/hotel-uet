@@ -20,7 +20,8 @@ class loginController extends Controller
     public function callback($social)
     {
     	$userSocial=Socialite::driver($social)->user();
-        $account=account::where('id_social',$userSocial->getId())->where('social',$social)->first();
+        //$account=account::where('id_social',$userSocial->getId())->where('social',$social)->first();
+        $account=account::where('email',$userSocial->getEmail())->where('social',$social)->first();
         if($account=='') {
             $account=new account;
             $account->id_social=$userSocial->getId();

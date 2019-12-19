@@ -52,7 +52,7 @@
       <!-- Modal body -->
       <div class="modal-body">
 {{--         <div class="alert alert-danger">Bạn phải đăng nhập để book phòng</div> --}}
-        <a href="redirect/facebook"><button type="button" class="btn btn-block btn-primary">Login with Facebook</button></a>
+        <!-- <a href="redirect/facebook"><button type="button" class="btn btn-block btn-primary">Login with Facebook</button></a> -->
         <a href="redirect/google"><button type="button" class="btn btn-block btn-danger">Login with Google</button></a>
       </div>
 

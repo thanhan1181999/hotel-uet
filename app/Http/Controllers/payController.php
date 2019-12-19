@@ -26,7 +26,8 @@ class payController extends Controller
         $vnp_TmnCode = "1EX1SQNP"; //Mã website tại VNPAY
         $vnp_HashSecret = "YOJSYYPXDIQEVMZTQNRXCITWDWZGRPUF"; //Chuỗi bí mật
         $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost/btl/public/account/return_vnpay";
+        //$vnp_Returnurl = "http://localhost/btl/public/account/return_vnpay";
+        $vnp_Returnurl = "http://hotel-uet.herokuapp.com/account/return_vnpay";
         $vnp_TxnRef = date('YmdHis'); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
         $vnp_OrderType = 'billpayment';

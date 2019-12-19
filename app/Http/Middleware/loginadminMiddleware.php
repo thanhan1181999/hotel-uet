@@ -19,8 +19,8 @@ class loginadminMiddleware
             $account=session()->get('account');
             if($account->role==0)
                 return $next($request);
-            session()->put('notice','Admin không được book phòng');
-            session()->put('levelNotice','danger');
+            // session()->put('notice','Admin không được book phòng');
+            // session()->put('levelNotice','danger');
         }
         return redirect('home');
     }
